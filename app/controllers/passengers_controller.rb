@@ -22,7 +22,7 @@ class PassengersController < ApplicationController
       name: params[:passenger][:name],
       phone: params[:passenger][:phone]
     )
-      redirect_to task_path
+      redirect_to passenger_path
     else
       render :edit
     end
