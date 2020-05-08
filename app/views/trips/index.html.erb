@@ -1,0 +1,19 @@
+<h1>Trips List</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Trip ID</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trips.each do |trip| %>
+      <tr>
+        <td><%= link_to trip.id, trip_path(trip) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h4><a href="<%= new_trip_path %>">Create a new trip</a></h4>
