@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YesLex Rideshare Program</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <%# Body needs editing to meet specifications.  %>
+  
+  <body>
+    <header>
+      <section class="title"><h1>YesLex Ride-Share</h1></section>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/tasks">Trips List</a></li>
+          <li><a href="<%= new_trip_path %>">Create a new trip</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <p>All Rights Reserved</p>
+    </footer>
+  </body>
+</html>
