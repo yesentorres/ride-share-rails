@@ -1,54 +1,73 @@
 require "test_helper"
 
 describe DriversController do
-  # Note: If any of these tests have names that conflict with either the requirements or your team's decisions, feel empowered to change the test names. For example, if a given test name says "responds with 404" but your team's decision is to respond with redirect, please change the test name.
+
+  let (:sample_driver) {
+    Driver.create(name: "Tom Jones", vin: "whatsnewpussycat")
+  }
 
   describe "index" do
-    it "responds with success when there are many drivers saved" do
+
+    it "responds with success when there's more than one driver" do
       # Arrange
-      # Ensure that there is at least one Driver saved
+      Driver.create(name: "Sally Jones", vin: "123456789")
+      Driver.create(name: "Bob Jones", vin: "987654321")
 
       # Act
+      get drivers_path
 
       # Assert
-
+      must_respond_with :success
     end
 
-    it "responds with success when there are no drivers saved" do
+    it "responds with success when there at least one driver" do
       # Arrange
-      # Ensure that there are zero drivers saved
+      Driver.create(name: "Sally Jones", vin: "123456789")
 
       # Act
+      get drivers_path
 
       # Assert
+      must_respond_with :success
+    end
 
+    it "still responds with success when there are no drivers saved" do
+      # Arrange
+      # zero drivers saved
+
+      # Act
+      get drivers_path
+
+      # Assert
+      must_respond_with :success
     end
   end
 
   describe "show" do
-    it "responds with success when showing an existing valid driver" do
-      # Arrange
-      # Ensure that there is a driver saved
-
+    it "responds with success for an existing valid driver id" do
       # Act
-
+      get driver_path(sample_driver.id)
+      
       # Assert
-
+      must_respond_with :success
     end
 
-    it "responds with 404 with an invalid driver id" do
-      # Arrange
-      # Ensure that there is an id that points to no driver
-
+    it "responds with 404 for an invalid driver id" do
       # Act
-
+      get driver_path(-1)
+      
       # Assert
-
+      must_respond_with :not_found
     end
   end
 
   describe "new" do
     it "responds with success" do
+      # Act
+      get new_driver_path
+      
+      # Assert
+      must_respond_with :success
     end
   end
 
