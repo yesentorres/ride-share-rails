@@ -1,1 +1,15 @@
-<h2>Index Page</h2>
+<h2>List of Drivers</h2>
+<nav>
+  <p><%= link_to "Return to Homepage", root_path %></p> 
+</nav>
+
+<%= button_to "Add Driver", new_driver_path %>
+
+<ul>
+  <% @drivers.each do |driver|  %>
+    <li>
+      <h6><%= driver.id %> <%= driver.name %></h6>
+      <p><%= driver.vin %>  | <%= driver.available == "true" ? "Available" : "Unavailable" %></p>
+    </li>
+  <% end %>
+</ul>
