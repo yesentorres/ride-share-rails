@@ -60,7 +60,7 @@ class PassengersController < ApplicationController
       name: params[:passenger][:name],
       phone: params[:passenger][:phone]
       )
-    if @passenger.save
+    if @passenger.save!
       redirect_to @passenger
     else
       render :new
