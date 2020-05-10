@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,27 +9,30 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <%# Body needs editing to meet specifications.  %>
-r
   <body>
+
     <header>
       <section class="title"><h1>YesLex Ride-Share</h1></section>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/tasks">Trips List</a></li>
-          <li><%= link_to "Drivers List", drivers_path %></li>
-          <li><a href="<%= new_trip_path %>">Create a new trip</a></li>
-          <li><a href="/passengers">Passengers List</a></li>
-          <li><a href="<%= new_passenger_path %>">Create a new passenger</a></li>
-          <li><a href="/drivers">Drivers List</a></li>
-          <li><a href="<%= new_driver_path %>">Create a new driver</a></li>
-        </ul>
-      </nav>
     </header>
+
+    <nav class="navbar">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/tasks">Trips List</a></li>
+        <li><a href="<%= new_trip_path %>">Create a new trip</a></li>
+
+        <li><a href="/passengers">Passengers List</a></li>
+        <li><a href="<%= new_passenger_path %>">Create a new passenger</a></li>
+
+        <li><%= link_to "Drivers List", drivers_path %></li>
+        <li><a href="<%= new_driver_path %>">Create a new driver</a></li>
+      </ul>
+    </nav>
+
     <main>
       <%= yield %>
     </main>
+
     <footer>
       <p>All Rights Reserved</p>
     </footer>
