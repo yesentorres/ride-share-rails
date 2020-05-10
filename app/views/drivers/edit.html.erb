@@ -1,1 +1,16 @@
-<h2>Edit Page</h2>
+<h2>Edit Driver</h2>
+
+<nav>
+  <p><%= link_to "Return to Driver List", drivers_path %></p> 
+</nav>
+
+<%= form_with model: @driver do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :vin %>
+  <%= f.text_field :vin %>
+
+  <%= f.submit "Edit Driver"%>
+<% end %>

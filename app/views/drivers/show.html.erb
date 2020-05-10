@@ -1,9 +1,10 @@
-<h2>Driver Profile</h2>
 <nav>
   <p><%= link_to "Return to Driver List", drivers_path %></p> 
 </nav>
 
-<h3><%= @driver.name %> </h3>
+<h2>Driver Profile :<%= @driver.name %> </h2>
+
+<h4>Details</h4>
 <ul>
   <li>
     <strong>ID:</strong> <%= @driver.id %>
@@ -26,5 +27,9 @@
   </li>
 </ul>
 
-<h3>Trip History </h3>
+<h4>Actions</h4>
+<%= link_to "Edit Driver", edit_driver_path%>
+ <%= link_to "Delete Driver", driver_path(@driver), method: :delete , data: {confirm: "Are you sure you want to delete #{@driver.name}?"}%>
+
+<h4>Trip History </h4>
 <p>Coming Soon!</p>
