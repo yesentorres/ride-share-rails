@@ -4,4 +4,5 @@
 
 <div>
   <h4><a href="<%= edit_trip_path %>">Edit this trip</a></h4>
+    <h4><a <%= link_to 'Delete Trip', trip_path(@trip), method: :delete, data: { confirm: 'Are you sure?' } %></a></h4>
 </div>
