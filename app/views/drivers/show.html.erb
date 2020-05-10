@@ -1,0 +1,30 @@
+<h2>Driver Profile</h2>
+<nav>
+  <p><%= link_to "Return to Driver List", drivers_path %></p> 
+</nav>
+
+<h3><%= @driver.name %> </h3>
+<ul>
+  <li>
+    <strong>ID:</strong> <%= @driver.id %>
+  </li>
+
+  <li>
+    <strong>VIN:</strong> <%= @driver.vin %>
+  </li>
+
+  <li>
+    <strong>Status:</strong> <%= @driver.available == "true" ? "Available" : "Unavailable" %>
+  </li>
+
+  <li>
+    <strong>Total Earnings:</strong> TBD
+  </li>
+
+    <li>
+    <strong>Average Rating:</strong> TBD
+  </li>
+</ul>
+
+<h3>Trip History </h3>
+<p>Coming Soon!</p>
