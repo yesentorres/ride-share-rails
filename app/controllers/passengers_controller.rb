@@ -1,6 +1,7 @@
 class PassengersController < ApplicationController
 
   def index 
+    @passengers = Passenger.all
   end 
 
   def show
@@ -18,7 +19,7 @@ class PassengersController < ApplicationController
     if @passenger.nil?
       head :not_found
     elsif @passenger.update(
-      id: params[:passenger][:id],
+      # id: params[:passenger][:id],
       name: params[:passenger][:name],
       phone: params[:passenger][:phone]
     )
@@ -37,6 +38,16 @@ class PassengersController < ApplicationController
   end
 
   def destroy
+    @passenger = Passenger.find_by(id: params[:id])
+
+    if @passenger.nil?
+      head :not_found
+      return
+    else
+      @passenger.destroy
+      redirect_to root_path
+      return 
+    end
   end 
 
   def new
@@ -49,7 +60,7 @@ class PassengersController < ApplicationController
       name: params[:passenger][:name],
       phone: params[:passenger][:phone]
       )
-    if @passenger.save
+    if @passenger.save!
       redirect_to @passenger
     else
       render :new
