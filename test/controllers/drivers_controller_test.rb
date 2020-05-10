@@ -87,7 +87,7 @@ describe DriversController do
       
       new_driver = Driver.find_by(name: driver_hash[:driver][:name])
       expect(new_driver.vin).must_equal driver_hash[:driver][:vin]
-      expect(new_driver.available).must_equal nil # TODO: update nil to "true"
+      expect(new_driver.available).must_equal true
       
       # Assert redirect
       must_respond_with :redirect
