@@ -1,31 +1,4 @@
 
 <h2>Add a new trip</h2>
 
-<%=  form_with model: @trip do |f| %>
-  <p>Fill in the following fields:</p>
-    <div>
-      <%= f.label :id %>
-      <%= f.text_field :id %>
-    </div>
-    <div>
-      <%= f.label :driver_id %>
-      <%= f.text_area :driver_id %>
-    </div>
-    <div>
-      <%= f.label :passenger_id %>
-      <%= f.text_area :passenger_id %>
-    </div>
-    <div>
-      <%= f.label :date %>
-      <%= f.text_area :date %>
-    </div>
-    <div>
-      <%= f.label :rating %>
-      <%= f.text_area :rating %>
-    </div>
-        <div>
-      <%= f.label :cost %>
-      <%= f.text_area :cost %>
-    </div>
-  <%= f.submit "Add trip" %>
-<% end %> 
+<%# Add new button for new trip %>

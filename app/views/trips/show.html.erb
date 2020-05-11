@@ -1,8 +1,16 @@
   
-<h2><%= @trip.name %></h2>
-<p><%= @trip.phone  %></p>
+<h2> Trip <%= @trip.id %></h2>
+<p> Driver ID: <%= @trip.driver_id  %></p>
+<p> Passenger ID: <%= @trip.passenger_id  %></p>
+<p> Date of Trip: <%= @trip.date  %></p>
+<p> Trip Rating: <%= @trip.rating  %></p>
+<p> Trip Cost: <%= @trip.cost  %></p>
 
 <div>
-  <h4><a href="<%= edit_trip_path %>">Edit this trip</a></h4>
-    <h4><a <%= link_to 'Delete Trip', trip_path(@trip), method: :delete, data: { confirm: 'Are you sure?' } %></a></h4>
+  <p> Passenger Details: <a <%= link_to @passenger.name, passenger_path(@passenger) %></a></p>
+  <p> Driver Details: <a <%= link_to @driver.name, driver_path(@driver) %></a></p>
+
+
+  <p><a href="<%= edit_trip_path %>">Edit this trip</a></p>
+    <p><a <%= link_to 'Delete Trip', trip_path(@trip), method: :delete, data: { confirm: 'Are you sure?' } %></a></p>
 </div>

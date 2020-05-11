@@ -1,11 +1,11 @@
   
 <h2><%= @passenger.name %></h2>
-<p><%= @passenger.phone  %></p>
+<p>Phone : <%= @passenger.phone  %></p>
 
-
+<%# Add list of passenger trips here %>
 
 <div>
-  <h4><a href="<%= new_trip_path %>">Add a new trip for this passenger</a></h4>
-  <h4><a href="<%= edit_passenger_path %>">Edit this passenger</a></h4>
-  <h4><a <%= link_to 'Delete Passenger', passenger_path(@passenger), method: :delete, data: { confirm: 'Are you sure?' } %></a></h4>
+  <p><a href="<%= new_trip_path %>">Add a new trip for this passenger</a></p>
+  <p><a href="<%= edit_passenger_path %>">Edit this passenger</a></p>
+  <p><a <%= link_to 'Delete Passenger', passenger_path(@passenger), method: :delete, data: { confirm: 'Are you sure?' } %></a></p>
 </div>

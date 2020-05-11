@@ -1,6 +1,7 @@
 class TripsController < ApplicationController
 
   def index
+    @trips = Trip.all
   end 
 
   def show
@@ -10,6 +11,10 @@ class TripsController < ApplicationController
     if @trip.nil?
       redirect_to root_path 
     end
+    
+    @passenger = Passenger.find_by(id: @trip.passenger_id)
+    @driver = Driver.find_by(id: @trip.driver_id)
+    # ^ To access details in view
   end
 
   def update
