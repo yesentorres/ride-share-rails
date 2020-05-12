@@ -3,6 +3,18 @@
   <p><%= link_to "Return to Driver List", drivers_path %></p> 
 </nav>
 
+<% if @driver.errors.any? %>
+  <p>Oops! Something went wrong with adding a new driver:</p>
+  <ul>
+    <% @driver.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> field <%= message %>
+      </li>
+    <% end %>
+  </ul>
+  <p>Please try again: </p>
+<% end %>
+
 <%= form_with model: @driver do |f| %>
 
   <%= f.label :name %>

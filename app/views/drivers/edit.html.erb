@@ -1,1 +1,29 @@
-<h2>Edit Page</h2>
+<h2>Edit Driver</h2>
+
+<nav>
+  <p><%= link_to "Return to Driver List", drivers_path %></p> 
+</nav>
+
+<% if @driver.errors.any? %>
+  <p>
+    Oops! Something went wrong with your edit:
+  </p>
+  <ul>
+    <% @driver.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> field <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @driver do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :vin %>
+  <%= f.text_field :vin %>
+
+  <%= f.submit "Edit Driver"%>
+<% end %>

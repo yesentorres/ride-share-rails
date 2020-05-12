@@ -1,9 +1,10 @@
-<h2>Driver Profile</h2>
 <nav>
   <p><%= link_to "Return to Driver List", drivers_path %></p> 
 </nav>
 
-<h3><%= @driver.name %> </h3>
+<h2>Driver Profile :<%= @driver.name %> </h2>
+
+<h4>Details</h4>
 <ul>
   <li>
     <strong>ID:</strong> <%= @driver.id %>
@@ -14,17 +15,32 @@
   </li>
 
   <li>
-    <strong>Status:</strong> <%= @driver.available == "true" ? "Available" : "Unavailable" %>
+    <strong>Status:</strong> <%= @driver.available ? "Available" : "Unavailable" %>
   </li>
 
   <li>
-    <strong>Total Earnings:</strong> TBD
+    <strong>Total Earnings:</strong> $<%= @driver.total_revenue %>
   </li>
 
     <li>
-    <strong>Average Rating:</strong> TBD
+    <strong>Average Rating:</strong> <%= @driver.average_rating %> / 5 stars
   </li>
 </ul>
 
-<h3>Trip History </h3>
-<p>Coming Soon!</p>
+<h4>Actions</h4>
+<%= link_to "Edit Driver", edit_driver_path%>
+ <%= link_to "Delete Driver", driver_path(@driver), method: :delete , data: {confirm: "Are you sure you want to delete #{@driver.name}?"}%>
+
+<h4>Trip History </h4>
+<% trip_collection = @driver.trips%>
+<ul>
+  <% trip_collection.each do |trip|  %>
+    <li>
+      <strong>Passenger: </strong><%= link_to "#{trip.passenger.name}", passenger_path(trip.passenger.id) %> ,
+      <strong>Trip ID: </strong><%= trip.id %>, 
+      <strong>Date: </strong><%= trip.date %>, 
+      <strong>Rating: </strong><%= trip.rating %>, 
+      <strong>Cost: </strong><%= trip.cost %>
+    </li>
+  <% end %>
+</ul>

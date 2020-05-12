@@ -11,8 +11,8 @@
 <ul>
   <% @drivers.each do |driver|  %>
     <li>
-      <h6><%= driver.id %>  <%= link_to driver.name, driver_path(driver) %></h6>
-      <p><%= driver.vin %>  | <%= driver.available == "true" ? "Available" : "Unavailable" %></p>
+      <h6><%= link_to driver.name, driver_path(driver) %> (<%= driver.id %> )</h6>
+      <p><%= driver.vin %>  | <%= driver.available ? "Available" : "Unavailable" %></p>
     </li>
   <% end %>
 </ul>
