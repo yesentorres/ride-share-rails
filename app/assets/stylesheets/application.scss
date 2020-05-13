@@ -16,3 +16,68 @@
 @import "bootstrap";
 
 @import "**/*";
+
+
+// Navigation Bar
+.navbar {
+  background-color:grey;
+}
+
+.navbar ul {
+  display: flex;
+  flex-direction: row;
+  justify-items: flex-end;
+  align-items: flex-end;
+  list-style-type: none;
+}
+
+.navbar li {
+  margin-top: .5em;
+  margin-right: 2em;
+  
+  // border: 1px solid black;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.25em;
+}
+
+.navbar a:hover {
+  color: rgb(255, 215, 200);
+}
+
+// Homepage Elements
+.header{
+  margin-top: 1.75em;
+  margin-bottom: 2em;
+  text-align: center;
+}
+
+.header h1{
+  letter-spacing: 3px;
+}
+
+.header h4 {
+  color: #D34C26;
+}
+
+.image {
+  text-align: center;
+}
+
+.footer {
+  margin-top: 1em;
+  height: 50px;
+  background-color:rgb(255, 215, 200);
+}
+
+.footer p {
+  margin-left: 1em;
+  padding-top: .75em;
+}
+
+.footer a {
+  color: blue;
+}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>YesLex Rideshare Program</title>
+    <title>YesLex Rideshare</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,44 +9,20 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <%# Body needs editing to meet specifications.  %>
   <body>
-
-    <header>
-      <section class="title"><h1>YesLex Ride-Share</h1></section>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/trips">Trips List</a></li>
-          <li><a href="<%= new_trip_path %>">Create a new trip</a></li>
-          <li><a href="/passengers">Passengers List</a></li>
-          <li><a href="<%= new_passenger_path %>">Create a new passenger</a></li>
-          <li><a href="/drivers">Drivers List</a></li>
-          <li><a href="<%= new_driver_path %>">Create a new driver</a></li>
-        </ul>
-      </nav>
+    <header class="header">
+      <h1>- The YesLex RideShare App -</h1>
+      <h4><em>Getting you where you need to go since '20.</em></h4>
     </header>
 
-    <nav class="navbar">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/tasks">Trips List</a></li>
-        <li><a href="<%= new_trip_path %>">Create a new trip</a></li>
-
-        <li><a href="/passengers">Passengers List</a></li>
-        <li><a href="<%= new_passenger_path %>">Create a new passenger</a></li>
-
-        <li><%= link_to "Drivers List", drivers_path %></li>
-        <li><a href="<%= new_driver_path %>">Create a new driver</a></li>
-      </ul>
-    </nav>
-
     <main>
-      <%= yield %>
+      <section class="image">
+        <img src="/assets/car.jpg" alt="view of scenic drive from car side mirror">
+      </section> 
     </main>
 
-    <footer>
-      <p>All Rights Reserved</p>
+    <footer class="footer">
+      <p><em>All Rights Reserved / Photo by <a href= "https://unsplash.com/@jeshoots" target="_blank">@jeshoots</a></em></p>
     </footer>
   </body>
 </html>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_12_234744) do
+ActiveRecord::Schema.define(version: 2020_05_13_075611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,19 +25,21 @@ ActiveRecord::Schema.define(version: 2020_05_12_234744) do
 
   create_table "passengers", force: :cascade do |t|
     t.string "name"
-    t.string "phone"
+    t.string "phone_num"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "trips", force: :cascade do |t|
-    t.integer "driver_id"
-    t.integer "passenger_id"
     t.datetime "date"
-    t.integer "rating"
-    t.integer "cost"
+    t.float "rating"
+    t.float "cost"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "passenger_id"
+    t.bigint "driver_id"
+    t.index ["driver_id"], name: "index_trips_on_driver_id"
+    t.index ["passenger_id"], name: "index_trips_on_passenger_id"
   end
 
 end
