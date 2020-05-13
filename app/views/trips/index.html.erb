@@ -20,4 +20,4 @@
   </tbody>
 </table>
 
-<h4><a href="<%= new_trip_path %>">Create a new trip</a></h4>
+<%= link_to 'Add a trip', {:controller => "trips", :action => "create", :passenger_id => @passenger.id} , :method=>:post  %>
