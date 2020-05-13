@@ -13,14 +13,10 @@
     <nav class="navbar">
       <ul>
         <li><%= link_to "Home", root_path %></li>
-
         <li><%= link_to "Passengers List", passengers_path %></li>
         <li><%= link_to "Create New Passenger", new_passenger_path %></li>
-
         <li><%= link_to "Drivers List", drivers_path %></li>
         <li><%= link_to "Create New Driver", new_driver_path %></li>
-
-        <li><%= link_to "Trip History", trips_path %></li>
       </ul>
     </nav>
     <%= yield %>

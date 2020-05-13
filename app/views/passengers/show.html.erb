@@ -1,15 +1,34 @@
-  
-<h2><%= @passenger.name %></h2>
-<p>phone_num : <%= @passenger.phone_num  %></p>
+<h2>Passenger Profile: <%= @passenger.name %> </h2>
 
-<%# <p>Passenger Total Expenditures: $<%= @passenger.trips_sum.to_f %></p> %>
-<%# ^I'm not sure why this isn't working. Any thoughts?  %>
+<h4>Details</h4>
+<ul>
+  <li>
+    <strong>ID:</strong> <%= @passenger.id %>
+  </li>
 
+  <li>
+    <strong>Phone Number:</strong> <%= @passenger.phone_num  %>
+  </li>
 
-<%= link_to "Trips", passenger_trips_path(@passenger.id)%>
+  <li>
+    <strong>Total Charged:</strong> $<%= @passenger.trips_total_cost  %>
+  </li>
+</ul>
 
+<h4>Actions</h4>
+<%= link_to "Edit Passenger", edit_passenger_path%>
+<%= link_to "Delete Passenger", passenger_path(@passenger), method: :delete , data: {confirm: "Are you sure you want to delete #{@passenger.name}?"}%>
 <%= link_to 'Add a trip', {:controller => "trips", :action => "create", :passenger_id => @passenger.id} , :method=>:post  %>
 
-<%= link_to "Edit ", edit_passenger_path(@passenger.id) %>
-
-<%= link_to "Delete ", passenger_path(@passenger.id), method: :delete %>
+<h4>Trip History </h4>
+<% trip_collection = @passenger.trips%>
+<ul>
+  <% trip_collection.each do |trip|  %>
+    <li>
+      <strong>Trip ID: </strong><%= link_to "#{trip.id}", trip_path(trip.id) %>, 
+      <strong>Date: </strong><%= trip.date %>, 
+      <strong>Rating: </strong><%= trip.rating %>, 
+      <strong>Cost: </strong><%= trip.cost %>
+    </li>
+  <% end %>
+</ul>
