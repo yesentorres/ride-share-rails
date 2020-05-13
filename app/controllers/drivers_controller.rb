@@ -49,7 +49,7 @@ class DriversController < ApplicationController
     end
 
     if @driver.update(driver_params)
-      redirect_to drivers_path
+      redirect_to driver_path
       return
     else
       render :edit
