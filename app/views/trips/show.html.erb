@@ -7,8 +7,8 @@
 <% if @trip.rating%>
   <p>Rating: <%= @trip.rating %></p>
 <%else%>
-  <section class = 'form'>
-    <%= form_with model: @trip, class: 'trip-form' do |f| %> 
+  <section class = "form">
+    <%= form_with model: @trip, class: "form" do |f| %> 
 
     <section>
       <%= f.label :rating %>
@@ -30,5 +30,5 @@
 
 
   <p><a href="<%= edit_trip_path %>">Edit this trip</a></p>
-    <p><a <%= link_to 'Delete Trip', trip_path(@trip), method: :delete, data: { confirm: 'Are you sure?' } %></a></p>
+    <p><a <%= link_to "Delete Trip", trip_path(@trip), method: :delete, data: { confirm: "Are you sure?" } %></a></p>
 </div>
