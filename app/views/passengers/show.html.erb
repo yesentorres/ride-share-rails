@@ -26,7 +26,7 @@
   <% trip_collection.each do |trip|  %>
     <li>
       <strong>Trip ID: </strong><%= link_to "#{trip.id}", trip_path(trip.id) %>, 
-      <strong>Date: </strong><%= trip.date %>, 
+      <strong>Date: </strong><%= trip.date.strftime("%Y-%m-%d") %>, 
       <strong>Rating: </strong><%= trip.rating %>, 
       <strong>Cost: </strong><%= trip.cost %>
     </li>

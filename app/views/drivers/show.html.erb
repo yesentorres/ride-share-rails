@@ -34,7 +34,7 @@
     <li>
       <strong>Passenger: </strong><%= link_to "#{trip.passenger.name}", passenger_path(trip.passenger.id) %> ,
       <strong>Trip ID: </strong><%= trip.id %>, 
-      <strong>Date: </strong><%= trip.date %>, 
+      <strong>Date: </strong><%= trip.date.strftime("%Y-%m-%d") %>, 
       <strong>Rating: </strong><%= trip.rating %>, 
       <strong>Cost: </strong><%= trip.cost %>
     </li>
