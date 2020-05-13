@@ -38,12 +38,15 @@ class PassengersController < ApplicationController
     if @passenger.nil?
       head :not_found
       return
-    elsif @passenger.update(
+    end 
+
+    if @passenger.update(
       # id: params[:passenger][:id],
       name: params[:passenger][:name],
       phone_num: params[:passenger][:phone_num]
     )
       redirect_to passenger_path
+      return
     else
       render :edit
       return
@@ -66,7 +69,7 @@ class PassengersController < ApplicationController
       return
     else
       @passenger.destroy
-      redirect_to root_path
+      redirect_to passengers_path
       return 
     end
   end 

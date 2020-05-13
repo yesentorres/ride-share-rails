@@ -1,7 +1,9 @@
 require "test_helper"
 
+# TODO: update trip tests
+
 describe TripsController do
-  
+
   let (:driver) {
     Driver.create name: "Captain Quint",
       vin: "398YEB947GH3452BH",

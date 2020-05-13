@@ -1,5 +1,7 @@
 require "test_helper"
 
+# TODO: update trip tests
+
 describe PassengersController do
 
   before do
@@ -14,8 +16,8 @@ describe PassengersController do
   end 
 
   describe "show" do
-    let (:sample_passener) {
-      Driver.create(name: "Kurt Vile", phone_num: "3452341111")
+    let (:sample_passenger) {
+      Passenger.create(name: "Kurt Vile", phone_num: "3452341111")
     }
 
     it "responds with success for an existing valid passenger id" do
@@ -30,8 +32,11 @@ describe PassengersController do
   end 
 
   describe "update" do
+    before do
+      Passenger.create(name: "Gloria Anzaldua", phone_num: "1-512-448-0839")
+    end
     it "returns an error if passenger is nil" do
-      get "/passengers/1876"
+      get edit_passenger_path(-1)
       must_respond_with :not_found
     end
 
@@ -39,14 +44,14 @@ describe PassengersController do
       invalid_passenger_hash = {
         driver: {
           name: "",
-          vin: "ScooooobyDooobyDoo"
+          phone_num: "ScooooobyDooobyDoo"
         }
       }
     
       valid_passenger = Passenger.first
 
       expect {
-        patch passenger_path(valid_passenger.id), params: valid_passenger_hash
+        patch passenger_path(valid_passenger.id), params: invalid_passenger_hash
       }.wont_change "Passenger.count"
       
       new_passenger = Passenger.find_by(name: invalid_passenger_hash[:driver][:name])
@@ -59,7 +64,7 @@ describe PassengersController do
 
   describe "edit" do
     let (:sample_passenger) {
-      Passenger.create(name: "Misty Day", vin: "39DHAN384Y763HGDN")
+      Passenger.create(name: "Misty Day", phone_num: "39DHAN384Y763HGDN")
     }
 
     it "can retrieve the edit path for a valid passenger" do
