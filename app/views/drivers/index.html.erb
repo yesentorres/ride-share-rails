@@ -1,17 +1,13 @@
 <h2>List of Drivers</h2>
-<nav>
-  <p><%= link_to "Return to Homepage", root_path %></p> 
-</nav>
 
 <button>
   <%= link_to "Add Driver", new_driver_path %>
 </button>
 
-
 <ul>
   <% @drivers.each do |driver|  %>
     <li>
-      <h6><%= link_to driver.name, driver_path(driver) %> (<%= driver.id %> )</h6>
+      <h6><%= link_to driver.name, driver_path(driver) %> (id <%= driver.id %>)</h6>
       <p><%= driver.vin %>  | <%= driver.available ? "Available" : "Unavailable" %></p>
     </li>
   <% end %>

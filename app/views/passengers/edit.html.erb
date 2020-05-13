@@ -1,16 +1,25 @@
-<h2>Edit a passenger here</h2>
+<h2>Edit Passenger</h2>
 
-<%=  form_with model: @passenger do |f| %>
-  <p>Fill in the following fields:</p>
-    <div>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-    <div>
-      <%= f.label :phone_num %>
-      <%= f.text_area :phone_num %>
-    </div>
-    <%= f.submit "Save changes" %>
-<% end %> 
+<% if @passenger.errors.any? %>
+  <p>
+    Oops! Something went wrong with your edit:
+  </p>
+  <ul>
+    <% @passenger.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> field <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
-<>
+<%= form_with model: @passenger do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :phone_num %>
+  <%= f.text_field :phone_num %>
+
+  <%= f.submit "Edit passenger"%>
+<% end %>
