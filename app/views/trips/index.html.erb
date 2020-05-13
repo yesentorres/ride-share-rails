@@ -1,4 +1,8 @@
-<h1>Trip List</h1>
+  <% if @passenger.nil?%>
+    <h1>Trip List</h1>
+  <% else %>
+   <h1><%= @passenger.name %>'s Trips</h1>
+  <% end %>
 
 <table>
   <thead>
@@ -10,10 +14,10 @@
   <tbody>
     <% @trips.each do |trip| %>
       <tr>
-        <td><%= link_to trip.id, trip_path(trip) %></td>
+        <td><%= link_to trip.id, trip %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<h4><a href="<%= new_trip_path %>">Create a new trip</a></h4>
+<%= link_to 'Add a trip', {:controller => "trips", :action => "create", :passenger_id => @passenger.id} , :method=>:post  %>
