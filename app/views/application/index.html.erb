@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>YesLex Rideshare Program</title>
+    <title>YesLex Rideshare</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,21 +10,6 @@
   </head>
 
   <body>
-  
-    <nav class="navbar">
-      <ul>
-        <li><a href="/">Home</a></li>
-
-        <li><%= link_to "Passengers List", passengers_path %></li>
-        <li><a href="<%= new_passenger_path %>">Create a new passenger</a></li>
-
-        <li><%= link_to "Drivers List", drivers_path %></li>
-        <li><a href="<%= new_driver_path %>">Create a new driver</a></li>
-
-        <li><%= link_to "Trip History", trips_path %></li>
-      </ul>
-    </nav>
-
     <header class="header">
       <h1>- The YesLex RideShare App -</h1>
       <h4><em>Getting you where you need to go since '20.</em></h4>
@@ -33,8 +18,7 @@
     <main>
       <section class="image">
         <img src="/assets/car.jpg" alt="view of scenic drive from car side mirror">
-      </section>
-        
+      </section> 
     </main>
 
     <footer class="footer">
