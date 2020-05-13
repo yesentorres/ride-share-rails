@@ -3,7 +3,24 @@
 <p> Driver ID: <%= @trip.driver_id  %></p>
 <p> Passenger ID: <%= @trip.passenger_id  %></p>
 <p> Date of Trip: <%= @trip.date  %></p>
-<p> Trip Rating: <%= @trip.rating  %></p>
+
+<% if @trip.rating%>
+  <p>Rating: <%= @trip.rating %></p>
+<%else%>
+  <section class = 'form'>
+    <%= form_with model: @trip, class: 'trip-form' do |f| %> 
+
+    <section>
+      <%= f.label :rating %>
+      <%= f.select :rating, [[nil,nil],[1,1],[2,2],[3,3],[4,4],[5,5],] %>
+    </section>
+
+    <%= f.submit "Save Rating", class: "button" %>
+    <% end %>
+  </section>
+<%end%>
+
+
 <p> Trip Cost: <%= @trip.cost  %></p>
 
 <div>
