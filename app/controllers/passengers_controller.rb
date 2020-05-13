@@ -22,7 +22,7 @@ class PassengersController < ApplicationController
     elsif @passenger.update(
       # id: params[:passenger][:id],
       name: params[:passenger][:name],
-      phone: params[:passenger][:phone]
+      phone_num: params[:passenger][:phone_num]
     )
       redirect_to passenger_path
     else
@@ -59,7 +59,7 @@ class PassengersController < ApplicationController
     @passenger = Passenger.new(
       id: params[:passenger][:id],
       name: params[:passenger][:name],
-      phone: params[:passenger][:phone]
+      phone_num: params[:passenger][:phone_num]
       )
     if @passenger.save!
       redirect_to @passenger
