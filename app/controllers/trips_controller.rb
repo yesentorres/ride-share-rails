@@ -1,7 +1,12 @@
 class TripsController < ApplicationController
 
   def index
-    @trips = Trip.all
+    if params[:passenger_id].nil?
+      @trips = Trip.all
+    else
+      @passenger = Passenger.find_by(id: params[:passenger_id])
+      @trips = Trip.where(passenger_id: params[:passenger_id])
+    end
   end 
 
   def show
@@ -49,21 +54,48 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    if params[:passenger_id].nil?
+    else
+      @passenger = Passenger.find_by(id: params[:passenger_id])
+    end
+    puts 
   end
 
+  # def create
+  #   @trip = Trip.new(
+  #     id: params[:trip][:id],
+  #     driver_id: params[:trip][:driver_id],
+  #     passenger_id: params[:trip][:passenger_id],
+  #     date: params[:trip][:date],
+  #     rating: params[:trip][:rating],
+  #     cost: params[:trip][:cost]
+  #     )
+  #   if @trip.save
+  #     redirect_to @trip
+  #   else
+  #     render :new
+  #   end
+  # end
+
   def create
+    driver = Trip.appoint_driver
+    date = Date.today
     @trip = Trip.new(
-      id: params[:trip][:id],
-      driver_id: params[:trip][:driver_id],
-      passenger_id: params[:trip][:passenger_id],
-      date: params[:trip][:date],
-      rating: params[:trip][:rating],
-      cost: params[:trip][:cost]
-      )
+      driver_id: driver.id,
+      passenger_id: params[:passenger_id], 
+      date: date,
+      rating: nil, 
+      cost: rand(12..112).to_f, 
+    )
     if @trip.save
-      redirect_to @trip
+      driver = "false"
+      driver.save
+      redirect_to passenger_path(params[:passenger_id])
+      return
     else
-      render :new
+      render :new, status: :bad_request 
+      return
     end
   end
+  
 end

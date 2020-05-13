@@ -7,15 +7,11 @@ class PassengersController < ApplicationController
   def show
     passenger_id = params[:id].to_i 
     @passenger = Passenger.find_by(id: passenger_id) 
+    @trips = Trip.find_by(id: passenger_id)
 
     if @passenger.nil?
       redirect_to root_path 
     end
-
-    # @trips = Trip.find_by(id: passenger_id)
-    
-    # ^Figure out how to integrate this into the passenger details page to show the list of passenger's trips. 
-
   end
 
   def update
