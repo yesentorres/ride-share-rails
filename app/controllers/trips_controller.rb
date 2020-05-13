@@ -61,22 +61,6 @@ class TripsController < ApplicationController
     puts 
   end
 
-  # def create
-  #   @trip = Trip.new(
-  #     id: params[:trip][:id],
-  #     driver_id: params[:trip][:driver_id],
-  #     passenger_id: params[:trip][:passenger_id],
-  #     date: params[:trip][:date],
-  #     rating: params[:trip][:rating],
-  #     cost: params[:trip][:cost]
-  #     )
-  #   if @trip.save
-  #     redirect_to @trip
-  #   else
-  #     render :new
-  #   end
-  # end
-
   def create
     driver = Trip.appoint_driver
     date = Date.today
@@ -88,14 +72,11 @@ class TripsController < ApplicationController
       cost: rand(12..112).to_f, 
     )
     if @trip.save
-      driver = "false"
+      driver.available = false
       driver.save
-      redirect_to passenger_path(params[:passenger_id])
-      return
+      redirect_to trip_path(@trip.id)
     else
       render :new, status: :bad_request 
-      return
     end
   end
-  
 end

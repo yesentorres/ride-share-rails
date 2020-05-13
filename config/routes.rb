@@ -4,12 +4,7 @@ Rails.application.routes.draw do
 
   resources :drivers
   resources :passengers do
-    resources :trips, only: [:index, :new]
-    # ^Created the following paths:
-    # passenger_trips GET    /passengers/:passenger_id/trips(.:format)                                                trips#index
-
-    # new_passenger_trip GET    /passengers/:passenger_id/trips/new(.:format)                                            trips#new
+    resources :trips, only: [:index, :new, :create]
   end
-
   resources :trips
 end
